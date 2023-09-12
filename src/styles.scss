@@ -1,1 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
+
+:root {
+  --primary-color: #4b4a75;
+  --primary-color-deeper: #2c2b45;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 10px;
+
+  @media (max-width: 435px) {
+    font-size: 8px;
+  }
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+}

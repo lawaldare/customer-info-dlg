@@ -1,0 +1,77 @@
+:host {
+  height: 100vh;
+  background: var(--primary-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+main {
+  background: white;
+  padding: 3rem;
+  border-radius: 4px;
+  box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.3);
+  max-width: 40rem;
+  width: 100%;
+
+  @media (max-width: 435px) {
+    width: 90%;
+  }
+
+  h1 {
+    color: var(--primary-color-deeper);
+    font-size: 3rem;
+  }
+
+  p {
+    font-size: 1.6rem;
+    color: gray;
+    margin-top: 0.5rem;
+  }
+
+  form {
+    margin-top: 2rem;
+
+    div {
+      margin-bottom: 2rem;
+      input {
+        font-size: 2rem;
+        padding: 1.4rem;
+        width: 100%;
+
+        &:focus {
+          outline: none;
+        }
+      }
+
+      p {
+        color: red;
+      }
+    }
+
+    button {
+      font-size: 2rem;
+      padding: 1.4rem;
+      border: none;
+      background: var(--primary-color);
+      color: white;
+      cursor: pointer;
+      border-radius: 2px;
+      transition: background 0.2s linear;
+
+      &:hover {
+        background: var(--primary-color-deeper);
+      }
+
+      &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        background: var(--primary-color);
+      }
+    }
+  }
+  p {
+    color: green;
+  }
+}
