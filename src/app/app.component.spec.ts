@@ -1,10 +1,30 @@
-import { TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { HttpClientModule } from '@angular/common/http';
+import { InputComponent } from './shared/input/input.component';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { CustomerService } from './services/customer.service';
+import { By } from '@angular/platform-browser';
+import { of } from 'rxjs';
+
+let component: AppComponent;
+let fixture: ComponentFixture<AppComponent>;
+let customerService: CustomerService;
 
 describe('AppComponent', () => {
-  beforeEach(() => TestBed.configureTestingModule({
-    declarations: [AppComponent]
-  }));
+  beforeEach(() =>
+    TestBed.configureTestingModule({
+      declarations: [AppComponent, InputComponent],
+      imports: [HttpClientModule, ReactiveFormsModule],
+    })
+  );
+
+  beforeEach(async () => {
+    fixture = TestBed.createComponent(AppComponent);
+    component = fixture.componentInstance;
+    customerService = TestBed.inject(CustomerService);
+    fixture.detectChanges();
+  });
 
   it('should create the app', () => {
     const fixture = TestBed.createComponent(AppComponent);
@@ -12,16 +32,21 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'customer-info'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('customer-info');
-  });
+  describe('Sign up form', () => {
+    beforeEach(async () => {
+      component.customerInfoForm.get('firstName')?.setValue('Dare');
+      component.customerInfoForm.get('lastName')?.setValue('Lawal');
+      component.customerInfoForm.get('email')?.setValue('lawaldare@gmail.com');
+      fixture.detectChanges();
+    });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('customer-info app is running!');
+    it('should call `submit` method of AppComponent when the button is clicked', () => {
+      spyOn(component, 'submit');
+      fixture.detectChanges();
+      const button = fixture.debugElement.nativeElement.querySelector('button');
+      button.click();
+      fixture.detectChanges();
+      expect(component.submit).toHaveBeenCalled();
+    });
   });
 });
