@@ -5,6 +5,36 @@
       "lastName": "Lawal",
       "email": "lawaldare@gmail.com",
       "id": 1
+    },
+    {
+      "firstName": "Dare",
+      "lastName": "Lawal",
+      "email": "lawaldare@gmail.com",
+      "id": 2
+    },
+    {
+      "firstName": "Joe",
+      "lastName": "Olean",
+      "email": "joe.olean@gmail.com",
+      "id": 3
+    },
+    {
+      "firstName": "Dare",
+      "lastName": "Lawal",
+      "email": "lawaldare@gmail.com",
+      "id": 4
+    },
+    {
+      "firstName": "Dare",
+      "lastName": "Lawal",
+      "email": "lawaldare@gmail.com",
+      "id": 5
+    },
+    {
+      "firstName": "Dare",
+      "lastName": "Lawal",
+      "email": "lawaldare@gmail.com",
+      "id": 6
     }
   ]
 }

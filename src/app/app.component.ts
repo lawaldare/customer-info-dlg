@@ -38,15 +38,15 @@ export class AppComponent implements OnDestroy {
       .subscribe(
         () => {
           this.showSuccessMessage = true;
+          setTimeout(() => {
+            this.showSuccessMessage = false;
+          }, 2000);
+          this.customerInfoForm.reset();
         },
         (error) => {
           console.log(error);
         }
       );
-    this.customerInfoForm.reset();
-    setTimeout(() => {
-      this.showSuccessMessage = false;
-    }, 2000);
   }
 
   ngOnDestroy(): void {
