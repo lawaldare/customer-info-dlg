@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CustomerService } from './services/customer.service';
 import { Subject, takeUntil } from 'rxjs';
 
@@ -11,23 +11,29 @@ const regex = '^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnDestroy {
-  customerInfoForm = this.fb.group({
-    firstName: [null, Validators.required],
-    lastName: [null, Validators.required],
-    email: [null, [Validators.required, Validators.pattern(regex)]],
+  firstName = new FormControl('', [Validators.required]);
+  lastName = new FormControl('', [Validators.required]);
+  email = new FormControl('', [Validators.required, Validators.pattern(regex)]);
+
+  customerInfoForm = new FormGroup({
+    firstName: this.firstName,
+    lastName: this.lastName,
+    email: this.email,
   });
 
   showSuccessMessage: boolean = false;
   private readonly ngOnDestroy$ = new Subject<void>();
 
-  constructor(
-    private fb: FormBuilder,
-    private customerService: CustomerService
-  ) {}
+  constructor(private customerService: CustomerService) {}
 
-  submit(form: FormGroup) {
+  submit() {
+    const customerInfo = {
+      firstName: this.customerInfoForm.value.firstName ?? '',
+      lastName: this.customerInfoForm.value.lastName ?? '',
+      email: this.customerInfoForm.value.email ?? '',
+    };
     this.customerService
-      .addCustomerInfo(form.value)
+      .addCustomerInfo(customerInfo)
       .pipe(takeUntil(this.ngOnDestroy$))
       .subscribe(
         () => {

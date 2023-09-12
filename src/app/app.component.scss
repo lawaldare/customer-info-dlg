@@ -35,19 +35,6 @@ main {
 
     div {
       margin-bottom: 2rem;
-      input {
-        font-size: 2rem;
-        padding: 1.4rem;
-        width: 100%;
-
-        &:focus {
-          outline: none;
-        }
-      }
-
-      p {
-        color: red;
-      }
     }
 
     button {

@@ -1,19 +1,14 @@
 <main>
   <h1>Sign Up Form</h1>
-  <form [formGroup]="customerInfoForm" (ngSubmit)="submit(customerInfoForm)">
+  <form [formGroup]="customerInfoForm" (ngSubmit)="submit()">
     <div>
-      <input type="text" formControlName="firstName" placeholder="First Name">
+      <app-input [control]="firstName" placeholder="Enter first name"></app-input>
     </div>
     <div>
-      <input type="text" formControlName="lastName" placeholder="Last Name">
+      <app-input [control]="lastName" placeholder="Enter last name"></app-input>
     </div>
     <div>
-      <input type="email" formControlName="email" placeholder="Email Address">
-      <ng-container *ngIf="customerInfoForm.touched && customerInfoForm.dirty">
-        <p *ngIf="customerInfoForm.controls.email.errors?.['pattern']">
-          You must enter a valid email
-        </p>
-      </ng-container>
+      <app-input [control]="email" placeholder="Enter email"></app-input>
     </div>
     <button [disabled]="customerInfoForm.invalid">Submit</button>
   </form>

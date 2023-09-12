@@ -1,0 +1,8 @@
+<input [formControl]="control" [type]="type" [placeholder]="placeholder" />
+
+<ng-container *ngIf="control.touched && control.dirty">
+  <p *ngIf="control.errors?.['required']">Field is required</p>
+  <p *ngIf="control.errors?.['pattern']">
+    You must enter a valid email
+  </p>
+</ng-container>

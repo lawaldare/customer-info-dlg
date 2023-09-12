@@ -1,0 +1,14 @@
+input {
+  font-size: 2rem;
+  padding: 1.4rem;
+  width: 100%;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+p {
+  color: red;
+  font-size: 1.6rem;
+}
