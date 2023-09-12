@@ -2,14 +2,11 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { InputComponent } from './shared/input/input.component';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { CustomerService } from './services/customer.service';
-import { By } from '@angular/platform-browser';
-import { of } from 'rxjs';
 
 let component: AppComponent;
 let fixture: ComponentFixture<AppComponent>;
-let customerService: CustomerService;
 
 describe('AppComponent', () => {
   beforeEach(() =>
@@ -22,7 +19,6 @@ describe('AppComponent', () => {
   beforeEach(async () => {
     fixture = TestBed.createComponent(AppComponent);
     component = fixture.componentInstance;
-    customerService = TestBed.inject(CustomerService);
     fixture.detectChanges();
   });
 
