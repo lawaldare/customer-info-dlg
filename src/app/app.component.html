@@ -2,13 +2,13 @@
   <h1>Sign Up Form</h1>
   <form [formGroup]="customerInfoForm" (ngSubmit)="submit()">
     <div>
-      <app-input [control]="firstName" placeholder="Enter first name"></app-input>
+      <app-input [control]="firstName" placeholder="Enter first name" label="First Name"></app-input>
     </div>
     <div>
-      <app-input [control]="lastName" placeholder="Enter last name"></app-input>
+      <app-input [control]="lastName" placeholder="Enter last name" label="Last Name"></app-input>
     </div>
     <div>
-      <app-input [control]="email" type="email" placeholder="Enter email"></app-input>
+      <app-input [control]="email" type="email" placeholder="Enter email" label="Email Address"></app-input>
     </div>
     <button [disabled]="customerInfoForm.invalid">Submit</button>
   </form>
